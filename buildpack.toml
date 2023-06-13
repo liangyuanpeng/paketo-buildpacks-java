@@ -38,7 +38,7 @@ api = "0.7"
 
   [[order.group]]
     id = "liangyuanpeng/buildpacks-kona"
-    version = "0.0.1"
+    version = "8.0.14"
 
   [[order.group]]
     id = "paketo-buildpacks/yarn"
