@@ -14,6 +14,8 @@ jobs:
         name: Create Package Test
         runs-on:
             - ubuntu-latest
+        permissions:
+          packages: write
         steps:
             - uses: actions/setup-go@v4
               with:
@@ -171,7 +173,9 @@ jobs:
                     --config "${HOME}"/package.toml \
                     --format "${FORMAT}"
                 fi
+                docker login ghcr.io -uliangyuanpeng -p${{ secrets.GITHUB_TOKEN }}
+                docker push ghcr.io/liangyuanpeng/buildpacks-java:0.0.1
               env:
                 FORMAT: image
-                PACKAGES: test
+                PACKAGES: ghcr.io/liangyuanpeng/buildpacks-java
                 VERSION: ${{ steps.version.outputs.version }}
