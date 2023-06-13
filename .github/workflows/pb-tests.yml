@@ -14,8 +14,6 @@ jobs:
         name: Create Package Test
         runs-on:
             - ubuntu-latest
-        permissions:
-          packages: write
         steps:
             - uses: actions/setup-go@v4
               with:
