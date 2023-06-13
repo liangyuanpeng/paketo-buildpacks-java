@@ -90,6 +90,7 @@ jobs:
                 else
                   VERSION=$(git rev-parse --short HEAD)
                 fi
+                VERSION=0.0.1
 
                 echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                 echo "Selected ${VERSION} from
