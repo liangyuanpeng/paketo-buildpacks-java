@@ -88,6 +88,7 @@ jobs:
                 else
                   VERSION=$(git rev-parse --short HEAD)
                 fi
+                VERSION=0.0.1
 
                 echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
                 echo "Selected ${VERSION} from
@@ -171,6 +172,11 @@ jobs:
                     --config "${HOME}"/package.toml \
                     --format "${FORMAT}"
                 fi
+                
+                docker login ghcr.io -uliangyuanpeng -p${{ secrets.GITHUB_TOKEN }}
+                docker tag ${PACKAGE}:${VERSION} ghcr.io/liangyuanpeng/buildpacks-java:0.0.1
+                docker images
+                docker push ghcr.io/liangyuanpeng/buildpacks-java:${{ steps.version.outputs.version }}
               env:
                 FORMAT: image
                 PACKAGES: test
