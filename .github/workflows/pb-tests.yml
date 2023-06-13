@@ -172,9 +172,10 @@ jobs:
                     --config "${HOME}"/package.toml \
                     --format "${FORMAT}"
                 fi
-                docker images
+                
                 docker login ghcr.io -uliangyuanpeng -p${{ secrets.GITHUB_TOKEN }}
                 docker tag ${PACKAGE}:${VERSION} ghcr.io/liangyuanpeng/buildpacks-java:0.0.1
+                docker images
                 docker push ghcr.io/liangyuanpeng/buildpacks-java:${{ steps.version.outputs.version }}
               env:
                 FORMAT: image
